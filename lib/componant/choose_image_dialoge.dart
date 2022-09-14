@@ -10,23 +10,15 @@ class ChooseImageDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller=Get.put(CustomController());
-    return Dialog(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(15),
-      ),
-      child: SizedBox(
-        height: 100,
-        child: Material(
-          borderRadius: BorderRadius.circular(15),
-          child: Row(
+    return
+
+      Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               GetBuilder<CustomController>(
                 builder: (_c) =>     GestureDetector(
                 onTap: () async{
-                  Get.back();
                   await controller.getImage(ImageSource.gallery);
-                  Get.back();
 
                 },
                 child: Column(
@@ -56,9 +48,8 @@ class ChooseImageDialog extends StatelessWidget {
                 onTap: () async{
                   Get.back();
                   await controller.getImage(ImageSource.camera);
-                  Get.back();
-                  controller.dispose();
-                },
+                   controller.dispose();
+                 },
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: const [
@@ -78,9 +69,9 @@ class ChooseImageDialog extends StatelessWidget {
               ),
               ),
             ],
-          ),
-        ),
-      ),
-    );
+
+
+
+     );
   }
 }

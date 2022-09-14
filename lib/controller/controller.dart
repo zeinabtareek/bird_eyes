@@ -70,7 +70,7 @@ this.customModel.customers= x;
   getImage(ImageSource imageSource)async{
 
     try {
-      final isGallery = await Get.dialog(const ChooseImageDialog());
+      // final isGallery = await Get.dialog(const ChooseImageDialog());
     final pickedFile =await ImagePicker().getImage(source: imageSource);
     if(pickedFile !=null){
       selectedImagePath.value=pickedFile.path;

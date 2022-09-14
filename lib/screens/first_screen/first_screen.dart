@@ -16,8 +16,7 @@ class FirstScreen extends StatelessWidget implements PreferredSizeWidget {
   Size get preferredSize => const Size.fromHeight(100);
   final controller=Get.put(CustomController());
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
-
-  @override
+   @override
   Widget build(BuildContext context) {
     return Scaffold(
         key: _scaffoldKey,
@@ -27,8 +26,11 @@ class FirstScreen extends StatelessWidget implements PreferredSizeWidget {
         Obx(()=>CustomAppBar(
           openDrawer: () async =>  _scaffoldKey.currentState!.openDrawer(),
           onPressed: () async{
-            await Get.dialog(ChooseImageDialog());
-            },
+
+            await controller.onBasicWaitingAlertPressed(
+                context,  widgetContent: ChooseImageDialog()) ;
+
+             },
           image: controller.selectedImagePath.value ==''?Text (' click'):
     Image.file(File(controller.selectedImagePath.value)),
         ),)),
